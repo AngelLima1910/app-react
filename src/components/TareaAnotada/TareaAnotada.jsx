@@ -14,7 +14,7 @@ export const TareaAnotada = ({tarea, index, handleCambiar, handleBorrar}) => {
                 <hr />
                 <div className="d-grid gap-2">
                   <button onClick={() => handleBorrar(tarea.id)} className="btn btn-outline-dark">Borrar</button>
-                  <button onClick={() => handleCambiar(tarea.id)} className="btn btn-outline-primary">{tarea.realizado ? "Marcar como inconclusa" : "Marcar como terminda "}</button>
+                  <button onClick={() => handleCambiar(tarea.id)} className="btn btn-outline-primary">{tarea.realizado ? "Marcar como inconclusa" : "Marcar como terminada "}</button>
                 </div>
             </div>
         </div>
