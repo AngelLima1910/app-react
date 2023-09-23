@@ -88,6 +88,7 @@ export const App = () => {
             terminadas++;
         } 
     }
+    let porcentaje = 0;
     if (state.length > 0) {
         porcentaje = terminadas / state.length;
     }
