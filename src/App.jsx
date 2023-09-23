@@ -4,7 +4,7 @@ import FormularioTareas from "./components/FormularioTareas/FormularioTareas"
 import Header from "./components/Header/Header"
 import { TareaAnotada } from "./components/TareaAnotada/TareaAnotada"
 import { tareaReducer } from "./reducers/tareaReducer"
-
+import Swal from "sweetalert2";
 
 //Funcion flecha
 export const App = () => {
@@ -37,6 +37,13 @@ export const App = () => {
             payload: tareaNueva
         }
         dispatch(action)
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Tarea agregada correctamente!',
+            showConfirmButton: false,
+            timer: 1500
+          })
         setDescipcion("")
     }
 
@@ -48,9 +55,30 @@ export const App = () => {
     }
 
     const handleBorrar = (id) => {
-        dispatch ({
-            type: "borrar",
-            payload: id
+        Swal.fire({
+            title: '¿Estas seguro de eliminar la tarea?',
+            text: "Sí lo haces, no hay vuelta atras!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, eliminalo!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire(
+                'Eliminado!',
+                'Tu tarea ha sido eliminada.',
+                'success'
+              )
+              dispatch ({
+                    type: "borrar",
+                    payload: id
+                })
+            } else if (result.isDenied) {
+                Swal.fire(
+                    'No paso nada'
+                )
+            }
         })
     }
 
@@ -58,11 +86,11 @@ export const App = () => {
     for (let i = 0; i < state.length; i++) {
         if (state[i].realizado === true) {
             terminadas++;
-        }
+        } 
     }
-
-    let porcentaje = terminadas / state.length;
-
+    if (state.length > 0) {
+        porcentaje = terminadas / state.length;
+    }
     return (
         <>
             <Header/>
