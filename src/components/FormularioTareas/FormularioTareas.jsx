@@ -29,5 +29,3 @@ export const FormularioTareas = ({descripcion, handleInputChange, handleSubmit})
         </>
     )
 }
-
-export default FormularioTareas

@@ -21,4 +21,3 @@ export const Footer = ({porcentaje}) => {
     );
 };
 
-export default Footer;

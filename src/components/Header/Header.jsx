@@ -1,4 +1,4 @@
-const Header = () => {
+export const Header = () => {
   return (
     <div className="container-fluid bg-success bg-gradient shadow-lg text-light mb-4">
         <div className="row py-4">
@@ -12,4 +12,4 @@ const Header = () => {
   )
 }
 
-export default Header
+
